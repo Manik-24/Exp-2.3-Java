@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.stream.Collectors;
 
 class Employee {
     int id;
@@ -17,22 +18,22 @@ class Employee {
     }
 }
 
-public class SortEmployees {
+public class Main {
     public static void main(String[] args) {
         List<Employee> employees = Arrays.asList(
-                new Employee(101, "Alice", 75000),
-                new Employee(102, "Bob", 50000),
-                new Employee(103, "Charlie", 90000)
+            new Employee(101, "Alice", 75000),
+            new Employee(102, "Bob", 50000),
+            new Employee(103, "Charlie", 90000)
         );
 
         System.out.println("Sorted by Salary:");
         employees.stream()
-                .sorted((e1, e2) -> Double.compare(e1.salary, e2.salary))
-                .forEach(System.out::println);
+                 .sorted(Comparator.comparingDouble(e -> e.salary))
+                 .forEach(System.out::println);
 
         System.out.println("\nSorted by Name:");
         employees.stream()
-                .sorted((e1, e2) -> e1.name.compareTo(e2.name))
-                .forEach(System.out::println);
+                 .sorted(Comparator.comparing(e -> e.name))
+                 .forEach(System.out::println);
     }
 }
