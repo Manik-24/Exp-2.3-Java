@@ -16,7 +16,7 @@ class Student {
     }
 }
 
-public class StudentFilterSort {
+public class Main {
     public static void main(String[] args) {
         List<Student> students = Arrays.asList(
                 new Student("Amit", 85),
