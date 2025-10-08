@@ -18,7 +18,7 @@ class Product {
     }
 }
 
-public class ProductStreamOps {
+public class Main {
     public static void main(String[] args) {
         List<Product> products = Arrays.asList(
                 new Product("Laptop", "Electronics", 80000),
@@ -28,26 +28,22 @@ public class ProductStreamOps {
                 new Product("TV", "Electronics", 45000)
         );
 
-        // 1. Filter products by category
         System.out.println("Electronics Products:");
         products.stream()
                 .filter(p -> p.category.equals("Electronics"))
                 .forEach(System.out::println);
 
-        // 2. Sort by price
         System.out.println("\nProducts sorted by price:");
         products.stream()
                 .sorted(Comparator.comparingDouble(p -> p.price))
                 .forEach(System.out::println);
 
-        // 3. Average price
         double avgPrice = products.stream()
                 .mapToDouble(p -> p.price)
                 .average()
                 .orElse(0.0);
         System.out.println("\nAverage Price: " + avgPrice);
 
-        // 4. Get product names
         System.out.println("\nProduct Names:");
         List<String> names = products.stream()
                 .map(p -> p.name)
